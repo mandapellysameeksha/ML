@@ -1,0 +1,6 @@
+venv/
+__pycache__/
+*.pyc
+backend/wine_quality.db
+backend/models/*.joblib
+.DS_Store
