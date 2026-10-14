@@ -1,0 +1,101 @@
+x = 5              # an integer (whole number)
+y = 3.14           # a float (decimal number)
+name = "CGPA"      # a string (text) - always in quotes
+is_placed = True   # a boolean (True/False)
+
+# type() tells you what kind of value a variable holds.
+# You will use this constantly to sanity-check data you loaded from a CSV.
+print(x, type(x))
+print(y, type(y))
+print(name, type(name))
+print(is_placed, type(is_placed))
+a = 7
+b = 2
+print("a + b =", a + b)     # addition
+print("a - b =", a - b)     # subtraction
+print("a * b =", a * b)     # multiplication
+print("a / b =", a / b)     # division (always gives a float)
+print("a ** 2 =", a ** 2)   # exponent (a squared) - used in Mean Squared Error formulas
+
+# --- COMPARISON OPERATORS ---
+cgpa = 8.4
+print("cgpa == 8.4 :", cgpa == 8.4)   # equality check (note: double ==, not =)
+print("cgpa > 8    :", cgpa > 8)      # greater than
+print("cgpa < 6    :", cgpa < 6)      # less than
+
+# --- LOGICAL OPERATORS: and / or / not ---
+attendance = 85
+placed = (cgpa > 8) and (attendance > 80)   # both conditions must be true
+print("placed :", placed)
+model_name = "Logistic Regression"
+accuracy = 0.87345
+
+# Old, clunky way (avoid this):
+print("Accuracy of " + model_name + " is " + str(accuracy))
+
+# f-string way (use this):
+print(f"Accuracy of {model_name} is {accuracy}")
+
+# ':.3f' inside the braces rounds a float to 3 decimal places -
+# you will use this in almost every experiment to print clean metrics.
+print(f"Accuracy of {model_name} is {accuracy:.3f}")
+features = ["CGPA", "AptitudeTestScore", "CodingTestScore", "MockInterviewScore"]
+
+print(features)          # the whole list
+print(features[0])       # FIRST item - Python counts from 0, not 1
+print(features[1])       # SECOND item
+print(features[-1])      # LAST item - negative index counts from the end
+print(len(features))     # how many items are in the list
+
+# Slicing: features[start:end] gives you a sub-list (end is NOT included)
+print(features[0:2])     # first two items
+
+# Adding to a list
+features.append("Internships")
+print(features)
+from sklearn.linear_model import Ridge, Lasso, ElasticNet
+
+models = {
+    "Ridge": Ridge(alpha=1.0),
+    "Lasso": Lasso(alpha=0.01),
+    "ElasticNet": ElasticNet(alpha=0.01),
+}
+
+print(models)                  # the whole dictionary
+print(models["Ridge"])         # access one value by its key
+
+# Looping over a dictionary's keys and values together:
+for name, model in models.items():
+    print(f"Model name: {name}  ->  Object: {model}")
+    cgpa = 8.2
+
+if cgpa >= 9:
+    tier = "High"
+elif cgpa >= 7:
+    tier = "Mid"
+else:
+    tier = "Low"
+
+print(f"CGPA {cgpa} falls into tier: {tier}")
+
+# You can also use if/else to guard against bad data,
+# e.g. before dividing or indexing:
+missing_count = 0
+if missing_count == 0:
+    print("No missing values - safe to proceed.")
+else:
+    print("Missing values found - impute before modelling.")
+   depths = [2, 4, 6, 8, 10]
+
+for depth in depths:
+    print(f"Training a tree with max_depth = {depth}")
+
+# range() generates a sequence of numbers without writing them all out
+for epoch in range(5):          # 0, 1, 2, 3, 4
+    print(f"Epoch {epoch}: computing gradient...")
+
+# Looping with an index AND a value using enumerate()
+for i, d in enumerate(depths):
+    print(f"Sweep step {i}: depth={d}") 
+placed = (cgpa > 8) and (attendance > 80)   # both conditions must be true
+print("placed :", placed)
